@@ -1,9 +1,6 @@
-import mongoose, { Types } from "mongoose";
+import mongoose from "mongoose";
 
-/**
- * @type {mongoose.SchemaDefinitionProperty}
- */
-const Schema = mongoose.Schema();
+const Schema = mongoose.Schema;
 
 export const PlayerSchema = new Schema({
   firstName: {
