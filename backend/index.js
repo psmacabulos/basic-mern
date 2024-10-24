@@ -11,8 +11,17 @@ const uri = `mongodb://localhost:27017/soccerDb`;
 // connect to mongoDb
 mongoose.Promise = global.Promise;
 mongoose.connect(uri);
-// mongoose.connect("mongodb+srv://patrick:heaven60500@cluster0.gegl6.mongodb.net/");
 
+// connection events
+mongoose.connection.on("connected", () => {
+  console.log(`Mongoose connected to ${uri}`);
+});
+mongoose.connection.on("error", (err) => {
+  console.log(`Mongoose error is ${err}`);
+});
+mongoose.connection.on("disconnected", (err) => {
+  console.log(`Mongoose error is disconnected`);
+});
 // body parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
