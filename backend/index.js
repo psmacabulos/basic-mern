@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import bodyParser from "body-parser";
-import routes from "./routes/soccerRoutes";
+import router from "./routes/soccerRoutes";
 
 const app = express();
 const PORT = 4000;
@@ -29,8 +29,8 @@ app.use(bodyParser.json());
 //cors
 app.use(cors());
 
-//routes
-routes(app);
+// routes
+app.use(router);
 
 app.get("/", (req, res) => {
   res.send(`App is running at port ${PORT}`);

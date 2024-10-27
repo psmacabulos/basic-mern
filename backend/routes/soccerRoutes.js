@@ -1,8 +1,18 @@
-import { addNewPlayer, getPlayers } from "../controllers/playerControllers";
+import {
+  addNewPlayer,
+  deletePlayerId,
+  getPlayerId,
+  getPlayers,
+  updatePlayerId,
+} from "../controllers/playerControllers";
+import express from "express";
 
-const routes = (app) => {
-  app.route("/players").post(addNewPlayer);
-  app.route("/players").get(getPlayers);
-};
+const router = express.Router();
 
-export default routes;
+router.get("/player/:playerId", getPlayerId);
+router.get("/players", getPlayers);
+router.post("/players", addNewPlayer);
+router.put("/player/:playerId", updatePlayerId);
+router.delete("/player/:playerId", deletePlayerId);
+
+export default router;
